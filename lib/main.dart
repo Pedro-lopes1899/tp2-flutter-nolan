@@ -25,41 +25,6 @@ class Principal extends StatelessWidget {
 class TelaFilme extends StatelessWidget {
   const TelaFilme({super.key});
 
-  // Ícone grande no lugar do pôster
-  Widget poster() {
-    return Container(
-      height: 220,
-      color: Colors.grey[900],
-      alignment: Alignment.center,
-      child: const Icon(Icons.movie, size: 90, color: Colors.white54),
-    );
-  }
-
-  // Botões de assistir e favoritar
-  Widget botoes(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        ElevatedButton(
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Reprodução iniciada!')),
-            );
-          },
-          child: const Text('Assistir agora'),
-        ),
-        IconButton(
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Adicionado à lista!')),
-            );
-          },
-          icon: const Icon(Icons.bookmark_border, color: Colors.white),
-        ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +34,7 @@ class TelaFilme extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            poster(),
+            const MoviePoster(),
             const SizedBox(height: 16),
             const Text(
               'Oppenheimer',
@@ -90,10 +55,53 @@ class TelaFilme extends StatelessWidget {
               style: TextStyle(color: Colors.white70),
             ),
             const SizedBox(height: 20),
-            botoes(context),
+            const ActionButtons(),
           ],
         ),
       ),
+    );
+  }
+}
+
+class MoviePoster extends StatelessWidget {
+  const MoviePoster({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 220,
+      color: Colors.grey[900],
+      alignment: Alignment.center,
+      child: const Icon(Icons.movie, size: 90, color: Colors.white54),
+    );
+  }
+}
+
+class ActionButtons extends StatelessWidget {
+  const ActionButtons({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Reprodução iniciada!')),
+            );
+          },
+          child: const Text('Assistir agora'),
+        ),
+        IconButton(
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Adicionado à lista!')),
+            );
+          },
+          icon: const Icon(Icons.bookmark_border, color: Colors.white),
+        ),
+      ],
     );
   }
 }
