@@ -1,0 +1,16 @@
+// Ex. 2(Aula02_04)
+// Programa em Dart que verifica se um número é par ou ímpar
+
+void main() {
+  int numero = 17; // número qualquer definido
+
+  verificarParidade(numero);
+}
+
+void verificarParidade(int numero) {
+  if (numero % 2 == 0) {
+    print('O número $numero é PAR.');
+  } else {
+    print('O número $numero é ÍMPAR.');
+  }
+}
